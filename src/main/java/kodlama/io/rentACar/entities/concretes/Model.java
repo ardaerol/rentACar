@@ -7,20 +7,24 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
-@Table(name="brands")
+@Table(name="models")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Brand {
+public class Model {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "BrandId")
-    private int brandId;
-    @Column(name = "BrandName")
-    private String brandName;
+    @Column(name = "modelId")
+    private int modelId;
 
-    @OneToMany(mappedBy = "brand")
-   private List<Model> models;
+    @Column(name = "modelName" )
+    private String modelName;
 
+    @ManyToOne
+    @JoinColumn(name = "brand_id")
+    private Brand brand;
+
+    @OneToMany(mappedBy = "model")
+    private List<Car> cars;
 }
