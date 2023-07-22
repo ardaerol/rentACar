@@ -1,8 +1,7 @@
-package kodlama.io.rentACar.business.requests.ModelRequest;
+package kodlama.io.rentACar.business.requests.CarRequest;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -10,18 +9,23 @@ import lombok.NoArgsConstructor;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class UpdateModelRequest {
+public class CreateCarRequest {
     @NotNull
     @NotBlank
-    @Size(min = 2,max = 12)
-    private String modelName;
+    private String plate;
+
+    @NotNull
+    private double dailyPrice;
+
+    @NotNull
+    private int modelYear;
 
     @NotNull
     private int modelId;
 
-    //
-
     @NotNull
-    @NotBlank
-    private int brandId;
+    private int state;
+
+
+
 }

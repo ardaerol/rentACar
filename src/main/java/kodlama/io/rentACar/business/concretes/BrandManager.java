@@ -43,9 +43,11 @@ public class BrandManager implements BrandService {
 
     @Override
     public GetByIdBrandResponse getById(int id) {
+        this.brandBusinessRules.chechIfBrandIdExistsById(id);
        Brand brand = this.brandRepository.findById(id).orElseThrow();
 
-       GetByIdBrandResponse response = this.modelMapperService.forResponse().map(brand,GetByIdBrandResponse.class);
+       GetByIdBrandResponse response = this.modelMapperService.forResponse()
+               .map(brand,GetByIdBrandResponse.class);
         return response;
     }
 
